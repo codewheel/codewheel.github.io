@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("https://s3-ap-southeast-2.amazonaws.com/assets.codewheel.com.au/SuisseIntl.woff");
+  font-weight: 400;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,7 +15,7 @@ html {
 body {
   font-size: 2.4rem;
   line-height: 2.9rem;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Suisse Int'l", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   color: #7F8C8D;
   background: #F5F6F6;
