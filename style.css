@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 50%;
+}
+
+body {
+  font-size: 2.4rem;
+  line-height: 2.9rem;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  color: #7F8C8D;
+  background: #F5F6F6;
+  margin: 0;
+}
+
+a, button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: none;
+  border: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+select {
+  appearance: none;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 2.9rem;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #34495F;
+  border-bottom: 1px solid #7F8C8D;
+}
+
+.header {
+  overflow: hidden;
+  background: white;
+}
+
+.header__link {
+  float: left;
+  padding: 5rem;
+  border-bottom: none;
+  width: 25%;
+  max-width: 50rem;
+}
+
+.header__link__logo {
+  float: left;
+  width: 6.5rem;
+  margin-top: -0.35rem;
+  margin-right: 2.5rem;
+  animation: rotate 12s infinite linear;
+}
+
+.header__link__name {
+  color: #34495F;
+}
+
+.header__link__description {
+  color: #7F8C8D;
+}
+
+.main {
+  overflow: hidden;
+}
+
+.main__intro {
+  color: #34495F;
+  width: 75%;
+  max-width: 150rem;
+  float: left;
+  padding: 5rem;
+  font-size: 4.8rem;
+  line-height: 5.8rem;
+}
+
+.main__aside {
+  color: #34495F;
+  width: 25%;
+  max-width: 50rem;
+  float: left;
+  padding: 5rem;
+}
+
+.main__content {
+  width: 50%;
+  max-width: 100rem;
+  float: left;
+  padding: 5rem;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
