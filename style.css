@@ -140,14 +140,17 @@ a {
   }
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 641px) and (max-width: 1280px) {
   body {
-    font-size: 1.8rem;
-    line-height: 2.2rem;
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+  p {
+    margin-bottom: 2.4rem;
   }
   .header__link__logo {
     float: left;
-    width: 4.875rem;
+    width: 5.075rem;
     margin-top: -0.2625rem;
     margin-right: 1.875rem;
   }
