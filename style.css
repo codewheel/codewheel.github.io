@@ -63,6 +63,11 @@ a {
   border-bottom: 1px solid #7F8C8D;
 }
 
+strong {
+  color: #34495F;
+  font-weight: normal;
+}
+
 .header {
   overflow: hidden;
   background: white;
