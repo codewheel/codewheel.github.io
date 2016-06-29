@@ -1,7 +1,19 @@
-@font-face {
-  font-family: "Suisse Int'l";
-  src: url("https://s3-ap-southeast-2.amazonaws.com/assets.codewheel.com.au/SuisseIntl.woff");
-  font-weight: 400;
+.main__note__code__line {
+  padding: 0 2rem;
+  background: white;
+}
+
+.main__note__code__line:first-child {
+  padding-top: 1rem;
+}
+
+.main__note__code__line:last-child {
+  padding-bottom: 1rem;
+}
+
+.indent:before {
+  content: "••";
+  color: transparent;
 }
 
 * {
@@ -15,7 +27,7 @@ html {
 body {
   font-size: 2.4rem;
   line-height: 2.9rem;
-  font-family: "Suisse Int'l", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   color: #7F8C8D;
   background: #F5F6F6;
@@ -68,6 +80,14 @@ strong {
   font-weight: normal;
 }
 
+img {
+  width: 100%;
+}
+
+pre, code {
+  font-family: monospace;
+}
+
 .header {
   overflow: hidden;
   background: white;
@@ -108,8 +128,21 @@ strong {
   overflow: hidden;
 }
 
+.main__content,
+.main__note__content {
+  width: 50%;
+  max-width: 100rem;
+  float: left;
+  padding: 5rem;
+}
+
 .main__aside {
   color: #34495F;
+}
+
+.main__aside,
+.main__note__details,
+.main__portfolio-item__details {
   width: 30%;
   min-width: 30rem;
   max-width: 50rem;
@@ -117,11 +150,68 @@ strong {
   padding: 5rem;
 }
 
-.main__content {
-  width: 50%;
-  max-width: 100rem;
+.main__portfolio-item,
+.main__note {
+  overflow: hidden;
+  border-bottom: 1px solid white;
+}
+
+
+.main__portfolio-item__details__title,
+.main__note__details__title {
+  color: #34495F;
+}
+
+.main__portfolio-item__details__year,
+.main__note__details__title {
+  margin-bottom: 2.9rem;
+}
+
+.main__aside__title {
+  color: #34495F;
+}
+
+.main__portfolio-item__images {
+  width: 60%;
+  max-width: 150rem;
   float: left;
   padding: 5rem;
+}
+
+.main__portfolio-item__images__slideshow {
+  position: relative;
+  width: 100%;
+  padding-top: 68.5%;
+  overflow: hidden;
+}
+
+.main__portfolio-item__images__slideshow__slide {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.28, 0.64, 0, 1),
+    opacity 0.5s;
+}
+
+.main__portfolio-item__images__slideshow__prev,
+.main__portfolio-item__images__slideshow__next {
+  border: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+}
+
+.main__portfolio-item__images__slideshow__prev {
+  cursor: w-resize;
+  left: 0;
+}
+
+.main__portfolio-item__images__slideshow__next {
+  cursor: e-resize;
+  right: 0;
 }
 
 @keyframes rotate {
@@ -157,4 +247,32 @@ strong {
   .main__aside {
     padding: 0;
   }
+}
+
+.footer {
+  color: #F5F6F6;
+  background: #34495F;
+  float: left;
+  border-bottom: none;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.footer__address {
+  width: 30%;
+  min-width: 30rem;
+  max-width: 50rem;
+  float: left;
+  padding: 5rem;
+}
+
+.footer__details {
+  width: 50%;
+  max-width: 100rem;
+  float: left;
+  padding: 5rem;
+}
+
+a.footer__link {
+  color: white;
 }
