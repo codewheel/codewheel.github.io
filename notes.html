@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Codewheel – Web Development in Melbourne, Australia</title>
+  <meta property="og:title" content="Codewheel – Web Development in Melbourne, Australia" />
+  <meta name="description" content="Codewheel provides down-to-earth workshops for designers, developers and people interested in how this sentence actually got here." />
+  <meta property="og:description" content="Codewheel provides down-to-earth workshops for designers, developers and people interested in how this sentence actually got here." />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="shortcut icon" href="/favicon.png" />
+</head>
+<body>
+  <div class="header">
+    <a class="header__link" href="/">
+      <img class="header__link__logo" src="/codewheel-logo.svg" />
+      <h1 class="header__link__name">
+        Codewheel
+      </h1>
+      <h2 class="header__link__description">
+        Sam Margalit
+      </h2>
+    </a>
+    <a class="header__link" href="/">
+      <h1 class="header__link__name">
+        Portfolio
+      </h1>
+      <h2 class="header__link__description">
+        Recent Work
+      </h2>
+    </a>
+    <a class="header__link" href="/courses.html">
+      <h1 class="header__link__name">
+        Courses
+      </h1>
+      <h2 class="header__link__description">
+        Information &amp; Dates
+      </h2>
+    </a>
+    <a class="header__link is-active" href="/notes.html">
+      <h1 class="header__link__name">
+        Notes
+      </h1>
+      <h2 class="header__link__description">
+        Experiments &amp; Findings
+      </h2>
+    </a>
+  </div>
+  <div class="main">
+    <div class="main__note">
+      <div class="main__note__details">
+        <h1 class="main__note__details__title">How to fix Stripe Checkout on Chrome for iOS when using react</h1>
+        <p class="main__note__details__date">June 29th, 2016</p>
+      </div>
+      <div class="main__note__content">
+        <p>Stripe Checkout uses a pop up when on mobile browsers to improve the checkout experience. Unfortunately, to block against unwanted pop ups Chrome for iOS has some very strict rules about when you can redirect users to another window or tab.</p>
+        <p>As a general rule you can only programmatically redirect users on Chrome for iOS when your redirect is directly inside an event handler and not in a callback. The logic being that the user has performed an action and this redirect is an intentional consequence.</p>
+        <p>Because react.js uses ‘Synthetic’ event handlers—when you attach a function to an ‘onClick’ handler in jsx it doesn't actually attach the listener directly to the DOM node but instead registers the handler as a callback to the ‘Synthentic’ event.</p>
+        <p>Chrome for iOS treats this callback as a side-effect to the event thereby blocking the redirect from firing in the onClick handler.</p>
+        <p>The solution is to attach the event directly to the DOM node using react’s ‘ref’ property which can take a function and will pass the DOM node as it’s first argument.</p>
+        <code class="main__note__code">
+          <div class="main__note__code__line">
+            &lt;button ref={function(node) {
+          </div>
+          <div class="main__note__code__line">
+            <span class="indent"></span>
+            node.onclick = this.handleClick.bind(this)}} /&gt;
+          </div>
+        </code>
+      </div>
+    </div>
+    <div class="main__note">
+      <div class="main__note__details">
+        <h1 class="main__note__details__title">On Hyperdev<h1>
+        <p class="main__note__details__date">June 29th, 2016</p>
+      </div>
+      <div class="main__note__content">
+        <p>HyperDev let’s you write client and server-side code in a browser saving and deploying your changes live. It’s an interesting idea that heroku actually played with years ago with heroku garden.</p>
+        <p>I got an email today informing me that my Postcard Maker had won the HyperDev get into nature competition.</p>
+        <p>I’d been toying with the idea for a little while and seemed like a perfect time to try it out (and nab some sweet camping gear to boot). It was a neat little experiment that took me the better part of a long weekend to create.</p>
+        <p>I found the nicest parts of the development experience actually being the realtime server-side updates like updating api endpoints or debugging payloads.</p>
+        <p>I do think I’ve been spoilt on the client-side development as I started to miss things webpack’s hot-swapping and module loading.</p>
+        <p>I think the best case for it is really the collaborative aspects, although I haven't had a chance to try it yet. I can see it working really well in a teaching or peer-programming scenario.</p>
+        <p>On the whole though I do applaud the good folks at FogCreek for having a run at an inbrowser IDE and I look forward to seeing what they do with it.</p>
+        <a href="https://hyperdev.com/blog/get-nature-developer-challenge-winner/">Read the post</a>
+      </div>
+    </div>
+    <div class="main__note">
+      <div class="main__note__details">
+        <h1 class="main__note__details__title">Drag to crop cover images<h1>
+        <p class="main__note__details__date">June 29th, 2016</p>
+      </div>
+      <div class="main__note__content">
+        <p>Websites like Facebook and Twitter allow you to upload an image and drag to crop it in a preview.</p>
+        <p>Updating the background-position property is notoriously slow so I’ve come up with an alternative way to position images using a percentage value. If you offset the image by <strong>x%</strong> from the top and also transform the image on the y axis by <strong>-x%</strong> you get the same effect.</p>
+        <p>Drag the slider to see how the image is repositioned as a percentage.</p>
+        <p><div class="main__note__example">
+          <style>
+            .wrapper {
+              position: relative;
+              padding-top: 40%;
+              width: 100%;
+              margin-top: 15%;
+              margin-bottom: 15%;
+              height: 0;
+            }
+            .container {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 8rem;
+              bottom: 0;
+            }
+            .image {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              left: 0;
+              width: 100%;
+              opacity: 0.5;
+            }
+            .cropped {
+              overflow: hidden;
+            }
+            .cropped .image {
+              opacity: 1;
+            }
+            .slider {
+              margin: 0;
+              width: 8rem;
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              -webkit-appearance: slider-vertical;
+            }
+            .css {
+              color: white;
+              position: absolute;
+              padding: 2rem;
+              left: 0;
+              top: 0;
+              right: 0;
+              background: rgba(0,0,0,0.5);
+              bottom: 0;
+              font-family: monospace;
+            }
+          </style>
+          <div class="wrapper">
+            <div class="container cropped">
+              <img class="image" src="/images/mountain.jpeg" data-image-cropped />
+            </div>
+            <div class="container">
+              <img class="image" src="/images/mountain.jpeg" data-image />
+              <div class="css">
+                <div>.image {</div>
+                  <div><span class="indent"></span>top: <span data-top>50</span>%;</div>
+                  <div><span class="indent"></span>transform: translateY(-<span data-transform>50</span>%);</div>
+                <div>}</div>
+              </div>
+            </div>
+            <input type="range" value="50" class="slider" data-slider />
+          </div>
+          <script type="text/javascript">
+            var image = document.querySelector('[data-image]')
+            var imageCropped = document.querySelector('[data-image-cropped]')
+            var slider = document.querySelector('[data-slider]')
+            var topValue = document.querySelector('[data-top]')
+            var transformValue = document.querySelector('[data-transform]')
+            slider.addEventListener('input', function(event) {
+              const x = event.target.value
+              topValue.innerHTML = x
+              transformValue.innerHTML = x
+              image.style.top = x + '%'
+              imageCropped.style.top = x + '%'
+              image.style.transform = 'translateY(-' + x + '%)'
+              imageCropped.style.transform = 'translateY(-' + x + '%)'
+            })
+          </script>
+        </div></p>
+        <p>The way it works is that the top % is relative to the container while the transform % is relative to the image itself. So, we can tell the image to offset the height of the container with top: 100% then we can tell it to offset the other way by 100% the height of itself.</p>
+        <p>The cool thing about this method is you can show a preview of what will be cropped out.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer__address">
+      Codewheel<br/>
+      19–21 Johnston St<br/>
+      Collingwood, VIC<br/>
+      Australia 3066
+    </div>
+    <div class="footer__details">
+      <p>I tweet the occasional bad joke on <a href="#" class="footer__link">Twitter</a>. I’m best reached by email at <a href="#" class="footer__link">sam@margalit.com.au</a>. The source code for this website is annotated and freely available over on the <a href="#" class="footer__link ">Codewheel GitHub.</p>
+    </div>
+  </div>
+  <script type="text/javascript" src="/index.js"></script>
+</body>
+</html>
