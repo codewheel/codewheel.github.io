@@ -50,44 +50,6 @@
   <div class="main">
     <div class="main__note">
       <div class="main__note__details">
-        <h1 class="main__note__details__title">How to fix Stripe Checkout on Chrome for iOS when using react</h1>
-        <p class="main__note__details__date">June 29th, 2016</p>
-      </div>
-      <div class="main__note__content">
-        <p>Stripe Checkout uses a pop up when on mobile browsers to improve the checkout experience. Unfortunately, to block against unwanted pop ups Chrome for iOS has some very strict rules about when you can redirect users to another window or tab.</p>
-        <p>As a general rule you can only programmatically redirect users on Chrome for iOS when your redirect is directly inside an event handler and not in a callback. The logic being that the user has performed an action and this redirect is an intentional consequence.</p>
-        <p>Because react.js uses ‘Synthetic’ event handlers—when you attach a function to an ‘onClick’ handler in jsx it doesn't actually attach the listener directly to the DOM node but instead registers the handler as a callback to the ‘Synthentic’ event.</p>
-        <p>Chrome for iOS treats this callback as a side-effect to the event thereby blocking the redirect from firing in the onClick handler.</p>
-        <p>The solution is to attach the event directly to the DOM node using react’s ‘ref’ property which can take a function and will pass the DOM node as it’s first argument.</p>
-        <code class="main__note__code">
-          <div class="main__note__code__line">
-            &lt;button ref={function(node) {
-          </div>
-          <div class="main__note__code__line">
-            <span class="indent"></span>
-            node.onclick = this.handleClick.bind(this)}} /&gt;
-          </div>
-        </code>
-      </div>
-    </div>
-    <div class="main__note">
-      <div class="main__note__details">
-        <h1 class="main__note__details__title">On Hyperdev<h1>
-        <p class="main__note__details__date">June 29th, 2016</p>
-      </div>
-      <div class="main__note__content">
-        <p>HyperDev let’s you write client and server-side code in a browser saving and deploying your changes live. It’s an interesting idea that heroku actually played with years ago with heroku garden.</p>
-        <p>I got an email today informing me that my Postcard Maker had won the HyperDev get into nature competition.</p>
-        <p>I’d been toying with the idea for a little while and seemed like a perfect time to try it out (and nab some sweet camping gear to boot). It was a neat little experiment that took me the better part of a long weekend to create.</p>
-        <p>I found the nicest parts of the development experience actually being the realtime server-side updates like updating api endpoints or debugging payloads.</p>
-        <p>I do think I’ve been spoilt on the client-side development as I started to miss things webpack’s hot-swapping and module loading.</p>
-        <p>I think the best case for it is really the collaborative aspects, although I haven't had a chance to try it yet. I can see it working really well in a teaching or peer-programming scenario.</p>
-        <p>On the whole though I do applaud the good folks at FogCreek for having a run at an inbrowser IDE and I look forward to seeing what they do with it.</p>
-        <a href="https://hyperdev.com/blog/get-nature-developer-challenge-winner/">Read the post</a>
-      </div>
-    </div>
-    <div class="main__note">
-      <div class="main__note__details">
         <h1 class="main__note__details__title">Drag to crop cover images<h1>
         <p class="main__note__details__date">June 29th, 2016</p>
       </div>
@@ -181,6 +143,44 @@
         </div></p>
         <p>The way it works is that the top % is relative to the container while the transform % is relative to the image itself. So, we can tell the image to offset the height of the container with top: 100% then we can tell it to offset the other way by 100% the height of itself.</p>
         <p>The cool thing about this method is you can show a preview of what will be cropped out.</p>
+      </div>
+    </div>
+    <div class="main__note">
+      <div class="main__note__details">
+        <h1 class="main__note__details__title">How to fix Stripe Checkout on Chrome for iOS when using react</h1>
+        <p class="main__note__details__date">June 29th, 2016</p>
+      </div>
+      <div class="main__note__content">
+        <p>Stripe Checkout uses a pop up when on mobile browsers to improve the checkout experience. Unfortunately, to block against unwanted pop ups Chrome for iOS has some very strict rules about when you can redirect users to another window or tab.</p>
+        <p>As a general rule you can only programmatically redirect users on Chrome for iOS when your redirect is directly inside an event handler and not in a callback. The logic being that the user has performed an action and this redirect is an intentional consequence.</p>
+        <p>Because react.js uses ‘Synthetic’ event handlers—when you attach a function to an ‘onClick’ handler in jsx it doesn't actually attach the listener directly to the DOM node but instead registers the handler as a callback to the ‘Synthentic’ event.</p>
+        <p>Chrome for iOS treats this callback as a side-effect to the event thereby blocking the redirect from firing in the onClick handler.</p>
+        <p>The solution is to attach the event directly to the DOM node using react’s ‘ref’ property which can take a function and will pass the DOM node as it’s first argument.</p>
+        <code class="main__note__code">
+          <div class="main__note__code__line">
+            &lt;button ref={function(node) {
+          </div>
+          <div class="main__note__code__line">
+            <span class="indent"></span>
+            node.onclick = this.handleClick.bind(this)}} /&gt;
+          </div>
+        </code>
+      </div>
+    </div>
+    <div class="main__note">
+      <div class="main__note__details">
+        <h1 class="main__note__details__title">On Hyperdev<h1>
+        <p class="main__note__details__date">June 29th, 2016</p>
+      </div>
+      <div class="main__note__content">
+        <p>HyperDev let’s you write client and server-side code in a browser saving and deploying your changes live. It’s an interesting idea that heroku actually played with years ago with heroku garden.</p>
+        <p>I got an email today informing me that my Postcard Maker had won the HyperDev get into nature competition.</p>
+        <p>I’d been toying with the idea for a little while and seemed like a perfect time to try it out (and nab some sweet camping gear to boot). It was a neat little experiment that took me the better part of a long weekend to create.</p>
+        <p>I found the nicest parts of the development experience actually being the realtime server-side updates like updating api endpoints or debugging payloads.</p>
+        <p>I do think I’ve been spoilt on the client-side development as I started to miss things webpack’s hot-swapping and module loading.</p>
+        <p>I think the best case for it is really the collaborative aspects, although I haven't had a chance to try it yet. I can see it working really well in a teaching or peer-programming scenario.</p>
+        <p>On the whole though I do applaud the good folks at FogCreek for having a run at an inbrowser IDE and I look forward to seeing what they do with it.</p>
+        <a href="https://hyperdev.com/blog/get-nature-developer-challenge-winner/">Read the post</a>
       </div>
     </div>
   </div>
