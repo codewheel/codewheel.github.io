@@ -1,0 +1,45 @@
+$fontsize-1: 2.7rem;
+$lineheight-1: 3.5rem;
+
+.f1 {
+  font-size: $fontsize-1;
+  line-height: $lineheight-1;
+}
+
+@each $bp-prefix, $size in $breakpoints {
+  @media #{$size} {
+    .#{$bp-prefix}-f1 {
+      font-size: $fontsize-1;
+      line-height: $lineheight-1;
+    }
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.f1-icon {
+  line-height: 0;
+  svg {
+    height: $fontsize-1;
+  }
+}
+
+.content {
+  p {
+    margin-bottom: nth($spacings, 2);
+  }
+
+  a {
+    color: $purple;
+  }
+}

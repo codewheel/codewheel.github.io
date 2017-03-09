@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<div class="clearfix py-4">
+  <div class="txt-purple col-4 col sm-col-12 px-4 mb-3">
+    {{page.sidebar | markdownify}}
+  </div>
+  <div class="txt-gray col-6 col sm-col-12 px-4 content">
+    {{page.content | markdownify}}
+  </div>
+</div>

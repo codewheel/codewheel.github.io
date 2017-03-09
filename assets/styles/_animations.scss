@@ -1,0 +1,16 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate 12s infinite linear;
+}
+
+.slide {
+  transition: transform 0.8s cubic-bezier(0.28, 0.64, 0, 1),
+}

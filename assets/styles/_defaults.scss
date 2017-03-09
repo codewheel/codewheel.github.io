@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  font-weight: normal;
+  margin: 0;
+}
+
+html {
+  font-size: 0.625vw;
+
+  @media #{$breakpoint-sm} {
+    font-size: 1.5vw;
+  }
+
+  @media #{$breakpoint-lg} {
+    font-size: 0.4vw;
+  }
+}
+
+body {
+  position: relative;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+img {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+strong {
+  color: #34495F;
+  font-weight: normal;
+}
+
+pre, code {
+  font-family: monospace;
+}

@@ -1,0 +1,101 @@
+.block { display: block; }
+
+.inline-block { display: inline-block; }
+
+.absolute { position: absolute; }
+
+.relative { position: relative; }
+
+.square { padding-top: 100%; }
+
+.rectangle { padding-top: 68.5%; }
+
+.align-baseline { vertical-align: baseline }
+
+.align-top      { vertical-align: top }
+
+.align-middle   { vertical-align: middle }
+
+.align-bottom   { vertical-align: bottom }
+
+.overflow-hidden { overflow: hidden }
+
+.overflow-scroll { overflow: scroll }
+
+.overflow-auto   { overflow: auto }
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table
+}
+
+.clearfix:after { clear: both }
+
+.top-0 {
+  top: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+@media #{$breakpoint-sm} {
+  .sm-block { display: block; }
+
+  .sm-inline-block { display: inline-block; }
+
+  .sm-square { padding-top: 100%; }
+
+  .sm-rectangle { padding-top: 67.5%; }
+
+  .sm-hide { display: none; }
+
+  .sm-overflow-hidden { overflow: hidden }
+
+  .sm-overflow-scroll { overflow: scroll }
+
+  .sm-overflow-auto   { overflow: auto }
+
+  .sm-clearfix:before,
+  .sm-clearfix:after {
+    content: " ";
+    display: table
+  }
+
+  .sm-clearfix:after { clear: both }
+}
+
+@media #{$breakpoint-lg} {
+  .lg-block { display: block; }
+
+  .lg-inline-block { display: inline-block; }
+
+  .lg-square { padding-top: 100%; }
+
+  .lg-rectangle { padding-top: 67.5%; }
+
+  .lg-hide { display: none; }
+
+  .lg-overflow-hidden { overflow: hidden }
+
+  .lg-overflow-scroll { overflow: scroll }
+
+  .lg-overflow-auto   { overflow: auto }
+
+  .lg-clearfix:before,
+  .lg-clearfix:after {
+    content: " ";
+    display: table
+  }
+
+  .lg-clearfix:after { clear: both }
+}

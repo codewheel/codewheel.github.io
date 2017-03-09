@@ -1,0 +1,138 @@
+---
+layout: default
+---
+<div class="clearfix py-4">
+  <div class="txt-purple col-4 col sm-col-12 px-4 mb-3">
+    <h3 class="txt-purple mb-1">A few experiments</h3>
+    <h4 class="mb-1 txt-gray">August 23rd, 2016</h4>
+  </div>
+  <div class="txt-gray col-6 col sm-col-12 px-4 content">
+    <p>Here are a few small side-projects I’ve been working on:</p>
+    <a href="http://www.coolaccidents.com/bowiealbumtoalbum/">http://www.coolaccidents.com/bowiealbumtoalbum/</a></br>
+    <p>An illustrated discographic walkthrough for the Cool Accidents blog</p>
+    <a href="http://codewheel.com.au/demo/gallery/">http://codewheel.com.au/demo/gallery/</a><br/>
+    <p>A little demo gallery averaging about 60fps during animation</p>
+    <a href="http://whls.tumblr.com/">http://whls.tumblr.com/</a>
+    <p>A tumblr theme using spring animations with Rebound.js</p>
+    <a href="https://time-mustang.hyperdev.space/">https://time-mustang.hyperdev.space/</a>
+    <p>A postcard maker, made with hyperdev using stripe.com and dispatched with lob.com</p>
+  </div>
+</div>
+<div class="clearfix py-4">
+  <div class="txt-purple col-4 col sm-col-12 px-4 mb-3">
+    <h3 class="txt-purple mb-1">Drag to crop cover images</h3>
+    <h4 class="mb-1 txt-gray">June 29th, 2016</h4>
+  </div>
+  <div class="txt-gray col-6 col sm-col-12 px-4 content">
+    <p>Websites like Facebook and Twitter allow you to upload an image and drag to crop it in a preview.</p>
+    <p>Updating the background-position property is notoriously slow so I’ve come up with an alternative way to position images using a percentage value. If you offset the image by <strong>x%</strong> from the top and also transform the image on the y axis by <strong>-x%</strong> you get the same effect.</p>
+    <p>Drag the slider to see how the image is repositioned as a percentage.</p>
+    <div class="main__note__example">
+      <style>
+        .wrapper {
+          position: relative;
+          padding-top: 40%;
+          width: 100%;
+          margin-top: 15%;
+          margin-bottom: 15%;
+          height: 0;
+        }
+        .container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 8rem;
+          bottom: 0;
+        }
+        .image {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 0;
+          width: 100%;
+          opacity: 0.5;
+        }
+        .cropped {
+          overflow: hidden;
+        }
+        .cropped .image {
+          opacity: 1;
+        }
+        .slider {
+          margin: 0;
+          width: 8rem;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          -webkit-appearance: slider-vertical;
+        }
+        .css {
+          color: white;
+          position: absolute;
+          padding: 2rem;
+          left: 0;
+          top: 0;
+          right: 0;
+          background: rgba(0,0,0,0.5);
+          bottom: 0;
+          font-family: monospace;
+        }
+      </style>
+      <div class="wrapper">
+        <div class="container cropped">
+          <img class="image" src="/assets/images/mountain.jpeg" data-image-cropped />
+        </div>
+        <div class="container">
+          <img class="image" src="/assets/images/mountain.jpeg" data-image />
+          <div class="css">
+            <div>.image {</div>
+              <div><span class="indent"></span>top: <span data-top>50</span>%;</div>
+              <div><span class="indent"></span>transform: translateY(-<span data-transform>50</span>%);</div>
+            <div>}</div>
+          </div>
+        </div>
+        <input type="range" value="50" class="slider" data-slider />
+      </div>
+      <script type="text/javascript">
+        var image = document.querySelector('[data-image]')
+        var imageCropped = document.querySelector('[data-image-cropped]')
+        var slider = document.querySelector('[data-slider]')
+        var topValue = document.querySelector('[data-top]')
+        var transformValue = document.querySelector('[data-transform]')
+        slider.addEventListener('input', function(event) {
+          const x = event.target.value
+          topValue.innerHTML = x
+          transformValue.innerHTML = x
+          image.style.top = x + '%'
+          imageCropped.style.top = x + '%'
+          image.style.transform = 'translateY(-' + x + '%)'
+          imageCropped.style.transform = 'translateY(-' + x + '%)'
+        })
+      </script>
+    </div>
+    <p>The way it works is that the top % is relative to the container while the transform % is relative to the image itself. So, we can tell the image to offset the height of the container with top: 100% then we can tell it to offset the other way by 100% the height of itself.</p>
+    <p>The cool thing about this method is you can show a preview of what will be cropped out.</p>
+  </div>
+</div>
+<div class="clearfix py-4">
+  <div class="txt-purple col-4 col sm-col-12 px-4 mb-3">
+    <h3 class="txt-purple mb-1">How to fix Stripe Checkout on Chrome for iOS when using react</h3>
+    <h4 class="mb-1 txt-gray">June 29th, 2016</h4>
+  </div>
+  <div class="txt-gray col-6 col sm-col-12 px-4 content">
+    <p>Stripe Checkout uses a pop up when on mobile browsers to improve the checkout experience. Unfortunately, to block against unwanted pop ups Chrome for iOS has some very strict rules about when you can redirect users to another window or tab.</p>
+    <p>As a general rule you can only programmatically redirect users on Chrome for iOS when your redirect is directly inside an event handler and not in a callback. The logic being that the user has performed an action and this redirect is an intentional consequence.</p>
+    <p>Because react.js uses ‘Synthetic’ event handlers—when you attach a function to an ‘onClick’ handler in jsx it doesn't actually attach the listener directly to the DOM node but instead registers the handler as a callback to the ‘Synthentic’ event.</p>
+    <p>Chrome for iOS treats this callback as a side-effect to the event thereby blocking the redirect from firing in the onClick handler.</p>
+    <p>The solution is to attach the event directly to the DOM node using react’s ‘ref’ property which can take a function and will pass the DOM node as it’s first argument.</p>
+    <code>
+      <div>
+        &lt;button ref={function(node) {
+      </div>
+      <div>
+        node.onclick = this.handleClick.bind(this)}} /&gt;
+      </div>
+    </code>
+  </div>
+</div>

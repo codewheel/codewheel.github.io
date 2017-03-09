@@ -1,0 +1,18 @@
+---
+title: Codewheel
+timezone: Australia/Melbourne
+permalink: pretty
+exclude:
+- Gruntfile.js
+- webpack.config.js
+- Gemfile.lock
+- package.json
+- README*
+- node_modules
+- ".gitignore"
+- assets/scripts/src
+gems:
+- jekyll-sitemap
+sass:
+  sass_dir: assets/styles/
+  style: compressed

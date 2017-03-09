@@ -1,3 +1,24 @@
+
+
+function handleGesure() {
+  var swiped = 'swiped: ';
+  if (touchendX < touchstartX) {
+      alert(swiped + 'left!');
+  }
+  if (touchendX > touchstartX) {
+      alert(swiped + 'right!');
+  }
+  if (touchendY < touchstartY) {
+      alert(swiped + 'down!');
+  }
+  if (touchendY > touchstartY) {
+      alert(swiped + 'left!');
+  }
+  if (touchendY == touchstartY) {
+      alert('tap!');
+  }
+}
+
 class Slideshow {
   constructor(slideshowElement) {
 
@@ -13,6 +34,10 @@ class Slideshow {
 
     // Setup our click listeners
     this.setupNavigationHandlers()
+
+    // Setup our swipe defaults
+    this.touchstartX = 0
+    this.touchendX = 0
 
     // Start the slideshow at the first element
     this.activeSlideIndex = 0
@@ -33,6 +58,30 @@ class Slideshow {
       event.preventDefault()
       this.goToSlide(this.activeSlideIndex - 1)
     }.bind(this))
+
+    // Listen for a touch start and update the state
+    this.el.addEventListener('touchstart', function(event) {
+      this.touchstartX = event.changedTouches[0].screenX
+    }.bind(this))
+
+    // Update the slides on touch end
+    this.el.addEventListener('touchend', function(event) {
+      console.log(event)
+      this.touchendX = event.changedTouches[0].screenX
+      this.handleGesture()
+    }.bind(this))
+  }
+
+  handleGesture() {
+
+    // Compare the touch start origin with the touch end origin
+    if (this.touchendX < this.touchstartX) {
+      this.goToSlide(this.activeSlideIndex + 1)
+    }
+
+    if (this.touchendX > this.touchstartX) {
+      this.goToSlide(this.activeSlideIndex - 1)
+    }
   }
 
   goToSlide(requestedSlideIndex) {

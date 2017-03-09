@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{% for project in page.projects %}
+  <div class="clearfix py-4 sm-py-0">
+    <div class="col-8 sm-col-12 col col-right px-4 sm-px-0">
+      <div data-slideshow class="relative rectangle overflow-hidden">
+        {% for image in project.images %}
+          <img class="slide absolute top-0 left-0 bottom-0 right-0" style="opacity: 0;" src="{{image}}" data-slide/>
+        {% endfor %}
+        <a href="#" class="absolute top-0 bottom-0 left-0 col-6 cursor-left" data-prev></a>
+        <a href="#" class="absolute top-0 bottom-0 right-0 col-6 cursor-right" data-next></a>
+      </div>
+    </div>
+    <div class="col-4 sm-col-12 pl-4 pr-4 lg-pr-6 sm-py-4 col txt-gray">
+      <h3 class="txt-purple">{{project.title}}</h3>
+      <h4 class="mb-1">{{project.role}}</h4>
+      <h5 class="mb-3">{{project.years}}</h5>
+      <div class="content">
+        {{project.description | markdownify}}
+      </div>
+    </div>
+  </div>
+{% endfor %}

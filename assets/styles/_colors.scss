@@ -1,0 +1,29 @@
+$gray: #7F8C8D;
+$white: #FFFFFF;
+$purple: #34495F;
+$off-white: #F5F6F6;
+
+.bg-off-white {
+  background-color: $off-white;
+}
+
+.bg-purple {
+  background-color: $purple;
+}
+
+.txt-purple {
+  color: $purple;
+}
+
+.txt-gray {
+  color: $gray;
+}
+
+.txt-white {
+  color: $white;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bg-white {
+  background-color: $white;
+}
