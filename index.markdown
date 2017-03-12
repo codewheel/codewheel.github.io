@@ -40,6 +40,8 @@ projects:
     years: 2017
     description: |
       A website for my girlfriend’s Nanny Agency.
+
+      The site is made with Jekyll and the content driven by Siteleaf.
     images:
       - assets/images/nanny-match-1.jpg
       - assets/images/nanny-match-2.jpg
