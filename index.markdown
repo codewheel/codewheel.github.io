@@ -26,6 +26,15 @@ projects:
       - assets/images/disco-1.jpg
       - assets/images/disco-2.jpg
       - assets/images/disco-3.jpg
+  - title: Fortunes – Keeper
+    role: Editor & Assistant Director
+    years: 2015
+    description: |
+      A music video I edited and co-directed for Fortunes.
+
+      The clip has reached over 80,000 views on youtube.
+    video:
+      - o83CPehRGVQ
   - title: Nanny Match
     role: Designer, Developer & Copywriter
     years: 2017
