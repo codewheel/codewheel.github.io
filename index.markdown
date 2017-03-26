@@ -3,9 +3,9 @@ title: Codewheel
 layout: portfolio
 projects:
   - title: Disco
-    role: Frontend Engineer & Product Designer
-    link: http://disco.ac
+    role: Frontend Engineer & Product Designer    
     years: 2015–2016
+    link: http://disco.ac
     description: |
       A web app for music-industry professionals to create, collobarate and share playlists.
 
@@ -22,6 +22,7 @@ projects:
   - title: myDr Go
     role: Lead Frontend Engineer & Product Designer
     years: 2016–2017
+    link: http://mydrgo.com.au
     description: |
       myDr Go connects patients with on-demand medical services.
 
@@ -47,7 +48,8 @@ projects:
         type: video
   - title: Nanny Match
     role: Designer, Developer & Copywriter
-    years: 2017
+    years: 2015–2017
+    link: http://nannymatch.com.au
     description: |
       A website for my girlfriend’s Nanny Agency.
 

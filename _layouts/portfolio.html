@@ -25,12 +25,17 @@ layout: default
       </div>
     </div>
     <div class="col-4 sm-col-12 pl-4 pr-4 lg-pr-6 sm-py-4 col txt-gray">
-      <h3 class="txt-purple">{{project.title}}</h3>
-      <h4 class="mb-1">{{project.role}}</h4>
-      <h5 class="mb-3">{{project.years}}</h5>
-      <div class="content">
-        {{project.description | markdownify}}
+      <div class="mb-2">
+        <h3 class="txt-purple">{{ project.title }}</h3>
+        <h4 class="mb-1">{{ project.role }}</h4>
+        <h5 class="mb-1">{{ project.years }}</h5>
       </div>
+      <div class="content">
+        {{ project.description | markdownify }}
+      </div>
+      {% if project.link %}
+        <a class="mb-1 block txt-purple no-underline" href="{{ project.link }}">{{ project.link }}</a>
+      {% endif %}
     </div>
   </div>
 {% endfor %}
