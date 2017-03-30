@@ -50,38 +50,22 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function handleGesure() {
-	  var swiped = 'swiped: ';
-	  if (touchendX < touchstartX) {
-	    alert(swiped + 'left!');
-	  }
-	  if (touchendX > touchstartX) {
-	    alert(swiped + 'right!');
-	  }
-	  if (touchendY < touchstartY) {
-	    alert(swiped + 'down!');
-	  }
-	  if (touchendY > touchstartY) {
-	    alert(swiped + 'left!');
-	  }
-	  if (touchendY == touchstartY) {
-	    alert('tap!');
-	  }
-	}
-
 	var Slideshow = function () {
-	  function Slideshow(slideshowElement) {
+	  function Slideshow(slideshow) {
 	    _classCallCheck(this, Slideshow);
 
-	    // Save a reference to our slideshow element
-	    this.el = slideshowElement;
+	    // Save a reference to our slideshow
+	    this.slideshow = slideshow;
+
+	    // Save a reference to our slides container
+	    this.slides = slideshow.querySelector('[data-slides]');
 
 	    // Save a reference to our slide elements
-	    this.slideElements = getArrayOfElements(this.el, '[data-slide]');
+	    this.slideElements = getArrayOfElements(this.slideshow, '[data-slide]');
 
 	    // Save a reference to our navigation elements
-	    this.next = this.el.querySelector('[data-next]');
-	    this.prev = this.el.querySelector('[data-prev]');
+	    this.next = getArrayOfElements(this.slideshow, '[data-next]');
+	    this.prev = getArrayOfElements(this.slideshow, '[data-prev]');
 
 	    // Setup our click listeners
 	    this.setupNavigationHandlers();
@@ -101,25 +85,28 @@
 	    value: function setupNavigationHandlers() {
 
 	      // When we click next, go to the next slide
-	      this.next.addEventListener('click', function (event) {
-	        event.preventDefault();
-	        this.goToSlide(this.activeSlideIndex + 1);
+	      this.next.map(function (next) {
+	        next.addEventListener('click', function (event) {
+	          event.preventDefault();
+	          this.goToSlide(this.activeSlideIndex + 1);
+	        }.bind(this));
 	      }.bind(this));
 
 	      // When we click previous, go to the previous slide
-	      this.prev.addEventListener('click', function (event) {
-	        event.preventDefault();
-	        this.goToSlide(this.activeSlideIndex - 1);
+	      this.prev.map(function (prev) {
+	        prev.addEventListener('click', function (event) {
+	          event.preventDefault();
+	          this.goToSlide(this.activeSlideIndex - 1);
+	        }.bind(this));
 	      }.bind(this));
 
 	      // Listen for a touch start and update the state
-	      this.el.addEventListener('touchstart', function (event) {
+	      this.slides.addEventListener('touchstart', function (event) {
 	        this.touchstartX = event.changedTouches[0].screenX;
 	      }.bind(this));
 
 	      // Update the slides on touch end
-	      this.el.addEventListener('touchend', function (event) {
-	        console.log(event);
+	      this.slides.addEventListener('touchend', function (event) {
 	        this.touchendX = event.changedTouches[0].screenX;
 	        this.handleGesture();
 	      }.bind(this));
@@ -130,11 +117,15 @@
 
 	      // Compare the touch start origin with the touch end origin
 	      if (this.touchendX < this.touchstartX) {
-	        this.goToSlide(this.activeSlideIndex + 1);
+	        if (this.touchstartX - this.touchendX > 50) {
+	          this.goToSlide(this.activeSlideIndex + 1);
+	        }
 	      }
 
 	      if (this.touchendX > this.touchstartX) {
-	        this.goToSlide(this.activeSlideIndex - 1);
+	        if (this.touchendX - this.touchstartX > 50) {
+	          this.goToSlide(this.activeSlideIndex - 1);
+	        }
 	      }
 	    }
 	  }, {

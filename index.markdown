@@ -11,13 +11,28 @@ projects:
 
       Built with react.js and redux in collaboration with David Grinton for Level Two Music.
     slides:
-      - url: https://player.vimeo.com/video/187324752
-        type: video
       - url: assets/images/disco-1.jpg
         type: image
       - url: assets/images/disco-2.jpg
         type: image
       - url: assets/images/disco-3.jpg
+        type: image
+      - url: https://player.vimeo.com/video/187324752
+        type: video
+  - title: Nanny Match
+    role: Designer, Developer & Copywriter
+    years: 2015–2017
+    link: http://nannymatch.com.au
+    description: |
+      A website for my girlfriend’s Nanny Agency.
+
+      The site is made with Jekyll and the content driven by Siteleaf.
+    slides:
+      - url: assets/images/nanny-match-1.jpg
+        type: image
+      - url: assets/images/nanny-match-2.jpg
+        type: image
+      - url: assets/images/nanny-match-3.jpg
         type: image
   - title: myDr Go
     role: Lead Frontend Engineer & Product Designer
@@ -46,17 +61,4 @@ projects:
     slides:
       - url: http://www.youtube.com/embed/o83CPehRGVQ
         type: video
-  - title: Nanny Match
-    role: Designer, Developer & Copywriter
-    years: 2015–2017
-    link: http://nannymatch.com.au
-    description: |
-      A website for my girlfriend’s Nanny Agency.
-
-      The site is made with Jekyll and the content driven by Siteleaf.
-    slides:
-      - url: assets/images/nanny-match-1.jpg
-        type: image
-      - url: assets/images/nanny-match-2.jpg
-        type: image
 ---
